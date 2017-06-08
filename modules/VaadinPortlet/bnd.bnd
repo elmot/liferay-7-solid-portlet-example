@@ -1,3 +1,4 @@
 Bundle-Name: VaadinPortlet
-Bundle-SymbolicName: vaadinportlet
+Bundle-SymbolicName: org.vaadin.sample.portlet
 Bundle-Version: 1.0.0
+Export-Package: org.vaadin.liferay.example

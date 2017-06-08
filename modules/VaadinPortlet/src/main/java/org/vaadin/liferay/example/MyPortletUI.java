@@ -1,4 +1,4 @@
-package org.vaadin;
+package org.vaadin.liferay.example;
 
 import javax.portlet.PortletContext;
 import javax.portlet.PortletSession;
