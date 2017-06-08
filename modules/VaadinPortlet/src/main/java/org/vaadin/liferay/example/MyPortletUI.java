@@ -7,6 +7,8 @@ import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.service.UserLocalServiceUtil;
+import com.vaadin.annotations.Theme;
+import com.vaadin.annotations.Widgetset;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.WrappedPortletSession;
 import com.vaadin.shared.ui.ContentMode;
@@ -17,6 +19,8 @@ import com.vaadin.ui.VerticalLayout;
 
 import org.osgi.service.component.annotations.Component;
 
+@Widgetset("org.vaadin.AppWidgetSet")
+@Theme("mytheme")
 @SuppressWarnings("serial")
 @Component(service = UI.class, property = {
         "com.liferay.portlet.display-category=category.sample",

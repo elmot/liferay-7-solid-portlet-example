@@ -1,4 +1,11 @@
+plugins {
+    id "fi.jasoft.plugin.vaadin" version "1.1.11"
+    id "java"
+}
 def vaadinVersion = "8.1.0.beta1"
+vaadin {
+    version "8.1.0.beta1"
+}
 
 def vaadinRepo = "https://maven.vaadin.com/vaadin-prereleases"    //TODO use this for Vaadin prereleases
 //def vaadinRepo = "https://repo1.maven.org/maven2"               //TODO use this for released Vaadin 8.1
@@ -14,9 +21,11 @@ dependencies {
     compileOnly group: "javax.portlet", name: "portlet-api", version: "2.0"
     compileOnly group: "javax.servlet", name: "javax.servlet-api", version: "3.1.0"
     compileOnly group: "org.osgi", name: "osgi.cmpn", version: "6.0.0"
-    compileOnly group: "com.vaadin", name: "vaadin-server", version: vaadinVersion
+    compileOnly group: "com.vaadin", name: "vaadin-shared", version: vaadin.version
+    compileOnly group: "com.vaadin", name: "vaadin-server", version: vaadin.version
+    compileOnly group: "com.vaadin", name: "vaadin-osgi-integration", version: vaadin.version
 }
-apply plugin: "java"
+
 
 task installLiferayDependencies() << {
     def allDeps =
@@ -31,7 +40,7 @@ task installLiferayDependencies() << {
             "vaadin-client-compiled",
             "vaadin-themes",
             "vaadin-liferay-integration"
-    ].each { dep -> allDeps << vaadinRepo + "/com/vaadin/" + dep + "/" + vaadinVersion + "/" + dep + "-" + vaadinVersion + ".jar" }
+    ].each { dep -> allDeps << vaadinRepo + "/com/vaadin/" + dep + "/" + vaadin.version + "/" + dep + "-" + vaadin.version + ".jar" }
 
     allDeps.each { url ->
         javaexec {
