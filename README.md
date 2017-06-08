@@ -30,7 +30,7 @@ How to build and run the portlet
  ```
  java -jar blade.jar deploy
  ```
-Open your browser
+Open link:http://localhost:8080/ in your browser for and enjoy a new portlet(_Liferay 7 Vaadin portlet_) under _Add_ -> _Applications_ -> _Sample_ menu 
 
 How to uninstall the portlet
 ---
