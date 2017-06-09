@@ -10,7 +10,7 @@ How to install OSGi dependencies
 ---
  
  All the required OSGi dependencies must be installed before running a portlet.
- Use commad:
+ Use command:
  ```
  gradlew installLiferayDependencies
  ```
@@ -18,7 +18,7 @@ How to install OSGi dependencies
 How to un-install OSGi dependencies
 ---
  
- Use commad:
+ Use command:
  ```
  gradlew uninstallLiferayDependencies
  ```
@@ -26,7 +26,7 @@ How to un-install OSGi dependencies
 How to build and run the portlet
 ---
  
- Use commad:
+ From _project root_ use command:
  ```
  java -jar blade.jar deploy
  ```
@@ -35,7 +35,7 @@ Open link:http://localhost:8080/ in your browser for and enjoy a new portlet(_Li
 How to uninstall the portlet
 ---
  
- Use commad:
+ Use command:
  ```
  java -jar blade.jar sh uninstall org.vaadin.sample.portlet
  ```
