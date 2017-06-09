@@ -3,6 +3,11 @@ plugins {
     id "java"
 }
 
+vaadinClassPathJar.enabled = false
+vaadinSourcesJar.enabled = false
+vaadinJavadocJar.enabled = false
+war.enabled = false
+
 artifacts {
     archives jar
 }
@@ -29,6 +34,7 @@ dependencies {
     compileOnly group: "com.vaadin", name: "vaadin-shared", version: vaadin.version
     compileOnly group: "com.vaadin", name: "vaadin-server", version: vaadin.version
     compileOnly group: "com.vaadin", name: "vaadin-osgi-integration", version: vaadin.version
+    compileOnly group: "com.vaadin", name: "vaadin-liferay-integration", version: vaadin.version
 }
 
 
@@ -81,9 +87,40 @@ task uninstallLiferayDependencies() << {
     }
 
 }
-jar {
-    from("src/main/webapp") {
-        include("**/*.*")
+
+ext {
+    generatedVaadinWebapp = "${buildDir}/classes/main/"
+}
+/*
+
+sourceSets {
+    main {
+        output.dir(generatedVaadinWebapp)
     }
 }
+*/
 
+vaadinCompile {
+// useful stuff to trace
+//    logging true
+//    logLevel 'TRACE'
+//    draftCompile true
+//    style 'DETAILED'
+
+    logging false
+    draftCompile false
+    style 'OBF'
+    strict true
+
+    manageWidgetset false
+    widgetset 'org.vaadin.liferay.example.AppWidgetSet'
+    outputDirectory generatedVaadinWebapp
+    jvmArgs '-Xmx2G'
+}
+
+jar {
+    dependsOn 'vaadinCompile'
+    exclude('**/*.java')
+    exclude('**/*.gwt.xml')
+    exclude('**/test/**/*.class')
+}

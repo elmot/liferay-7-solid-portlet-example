@@ -19,8 +19,8 @@ import com.vaadin.ui.VerticalLayout;
 
 import org.osgi.service.component.annotations.Component;
 
-@Widgetset("org.vaadin.AppWidgetSet")
-@Theme("mytheme")
+@Widgetset(AppWidgetSet.NAME)
+//@Theme("mytheme")
 @SuppressWarnings("serial")
 @Component(service = UI.class, property = {
         "com.liferay.portlet.display-category=category.sample",
